@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>注册 - Eazychina</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css"
+	media="all">
+<link rel="stylesheet" href="../../layuiadmin/style/admin.css"
+	media="all">
+<link rel="stylesheet" href="../../layuiadmin/style/login.css"
+	media="all">
+</head>
+
+<style>
+body {
+	background: url(../layuiadmin/style/res/BS.jpg) no-repeat fixed center;
+	width: 100%;
+	height: 100%;
+	background-size: 100% 100%;
+}
+/**
+                     * 整体居中功能；
+                     * 背景透明虚化
+                     * 溢出隐藏
+                     * 边缘圆角化
+                     * 文字增加淡阴影
+                     */
+#fatherDiv {
+	width: 98%;
+	height: 97%;
+	position: relative;
+	margin: 0 auto;
+	padding: 1em;
+	/*max-width: 93em;*/
+	background: hsla(0, 50%, 0%, .25) border-box;
+	overflow: hidden;
+}
+/**
+                     * 整体居中功能；
+                     * 背景透明虚化
+                     * 溢出隐藏
+                     * 边缘圆角化
+                     * 文字增加淡阴影
+                     */
+#sonDiv {
+	width: 88%;
+	height: 87%;
+	background: rgba(255, 255, 255, 0.657) border-box;
+	position: relative;
+	margin: 0 auto;
+	padding: 1em;
+	max-width: 53em;
+	overflow: hidden;
+	border-radius: .3em;
+	box-shadow: 0 0 0 1px hsla(0, 0%, 100%, .1) inset, 0 .5em 1em
+		rgba(0, 0, 0, 0.6);
+	text-shadow: 0 1px 1px hsla(0, 0%, 100%, .3);
+}
+
+.layui-trans layadmin-user-login-footer {
+	margin-bottom: 0;
+}
+}
+</style>
+
+<body>
+
+	<div class="layadmin-user-login" id="LAY-user-login">
+		<div class="layadmin-user-login-main">
+			<div class="layui-anim layui-anim-up" id="sonDiv">
+				<div class="layadmin-user-login-box layadmin-user-login-header">
+					<h2>NewsRecommends</h2>
+					<p>
+						选择感兴趣的标签
+						</p>
+				</div>
+				<form
+					th:action="${#httpServletRequest.getContextPath()}+'/register3'">
+					<label class="layui-form-label">复选框</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="test" id="Comedy">Comedy <input
+							type="checkbox" name="test" id="Western">Western <input
+							type="checkbox" name="test" id="Action">Action <input
+							type="checkbox" name="test" id="Sci-Fi">Sci-Fi <input
+							type="checkbox" name="test" id="Thriller">Thriller <input
+							type="checkbox" name="test" id="Fantasy">Fantasy <input
+							type="checkbox" name="test" id="Romance">Romance <input
+							type="checkbox" name="test" id="Drama">Drama <input
+							type="checkbox" name="test" id="Adventure">Adventure <input
+							type="checkbox" name="test" id="Documentary">Documentary
+
+						<input type="checkbox" name="test" id="War">War <input
+							type="checkbox" name="test" id="Film-Noir">Film-Noir <input
+							type="checkbox" name="test" id="Animation">Animation <input
+							type="checkbox" name="test" id="Crime">Crime<input
+							type="checkbox" name="test" id="Horror">Horror <input
+							type="checkbox" name="test" id="IMAX">IMAX <input
+							type="checkbox" name="test" id="Mystery">Mystery <input
+							type="checkbox" name="test" id="Musical">Musical
+
+						<button type="submit" value="Submit" id="btn"
+							class="layui-btn layui-btn-fluid">开始推荐</button>
+					</div>
+			</div>
+
+
+			</form>
+
+			<div
+				class="layadmin-user-login-box layadmin-user-login-body layui-form">
+
+				<div class="layui-trans layui-form-item layadmin-user-login-other">
+
+					<a href="login.html"
+						class="layadmin-user-jump-change layadmin-link layui-hide-xs">用已有帐号登入</a>
+					<a href="login.html"
+						class="layadmin-user-jump-change layadmin-link layui-hide-sm layui-show-xs-inline-block">登入</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="layui-trans layadmin-user-login-footer">
+
+			<p>
+				© EazyCina <a href="http://www.eazychina.store/" target="_blank">EazyCina.com</a>
+			</p>
+		</div>
+
+	</div>
+	</div>
+
+	<script th:src="@{/layuiadmin/layui/layui.js}"></script>
+	<script th:type="@{/js/jquery/jquery-1.11.1.min.js}"></script>
+	<script>
+		layui
+				.config({
+					base : '/layuiadmin/' //静态资源所在路径
+				})
+				.extend({
+					index : 'lib/index' //主入口模块
+				})
+				.use(
+						[ 'index', 'user' ],
+						function() {
+
+							var $ = layui.$, setter = layui.setter, admin = layui.admin, form = layui.form, router = layui
+									.router();
+							console.log("测试")
+							result = "";
+							$("#sonDiv").click(function() {
+								console.log("测试")
+								$("input[name='test']").each(function() {
+									$(this).change(function() {
+										//	console.log("对象属性"+$(this))
+										console.log($(this).is(":checked"))
+										if ($(this).is(":checked")) {
+											result += $(this).attr("id") + ","
+										}
+									})
+								})
+								console.log(result)
+										$.ajax({
+					url : '/register2?genners='+result,
+					type : 'get',
+					success : function(data) {
+						console.log(data);}
+							})
+							})
+						})
+	</script>
+</body>
+</html>

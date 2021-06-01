@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="news.recommend.system.mapper.MovieLikeRecommendMapper">
+	<select id="selectMovieLikeList"  parameterType="news.recommend.system.pojo.MovieLikeRecommendPojo"  resultType="news.recommend.system.pojo.MovieLikeRecommendPojo">
+				SELECT * FROM `tf_idf_recommend_movie_likes` where movieId=#{movieId};
+	</select>
+</mapper>

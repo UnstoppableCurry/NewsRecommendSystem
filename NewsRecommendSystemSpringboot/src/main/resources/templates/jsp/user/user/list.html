@@ -1,0 +1,184 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>layuiAdmin 网站用户</title>
+    <title>layuiAdmin 网站用户</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../layuiadmin/style/admin.css" media="all">
+
+    <body>
+
+        <div class="layui-fluid">
+            <div class="layui-card">
+                <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">ID</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="id" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">用户名</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">邮箱</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="email" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">性别</label>
+                            <div class="layui-input-block">
+                                <select name="sex">
+								<option value="0">不限</option>
+								<option value="1">男</option>
+								<option value="2">女</option>
+							</select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button class="layui-btn layuiadmin-btn-useradmin" lay-submit lay-filter="LAY-user-front-search">
+							<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+						</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-card-body">
+                    <div style="padding-bottom: 10px;">
+                        <button class="layui-btn layuiadmin-btn-useradmin" data-type="batchdel">删除</button>
+                        <button class="layui-btn layuiadmin-btn-useradmin" data-type="add">添加</button>
+                    </div>
+
+                    <table class="layui-table layui-form">
+                        <thead>
+                            <tr>
+                                <th>选择</th>
+                                <th>ID</th>
+                                <th>用户名</th>
+                                <th>手机号</th>
+                                <th>邮箱</th>
+                                <th>性别</th>
+                                <th>密码</th>
+                                <th>注册时间</th>
+                                <th>昵称</th>
+                                <th>备注</th>
+                                <th>权限</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-index="0" class="" th:each="user,State : ${users}">
+                            <td data-field="0" data-key="1-0-0"
+								class="layui-table-col-special">
+								<div class="layui-table-cell laytable-cell-1-0-0 laytable-cell-checkbox">
+									<input type="checkbox" name="layTableCheckbox"
+										lay-skin="primary">
+									<div class="layui-unselect layui-form-checkbox"
+										lay-skin="primary">
+										<i class="layui-icon layui-icon-ok"></i>
+									</div>
+								</div>
+								
+							</td>
+							<td data-field="ID " data-key="1-0-4 " class=" ">
+								<div class="layui-table-cell laytable-cell-1-0-4 "
+									th:text="${user.id} "></div>
+							</td>
+							<td data-field="Username " data-key="1-0-4 " class=" ">
+								<div class="layui-table-cell laytable-cell-1-0-4 "
+									th:text="${user.username} "></div>
+							</td>
+							<td data-field="phone " data-key="1-0-4 " class=" ">
+								<div class="layui-table-cell laytable-cell-1-0-4 "
+									th:text="${user.phonenumber} "></div>
+							</td>
+							<td data-field=" email " data-key="1-0-5 " class=" ">
+								<div class="layui-table-cell laytable-cell-1-0-5 "
+									th:text="${user.email} "></div>
+							</td>
+							<td data-field="sex " data-key="1-0-6 " class=" ">
+								<div class="layui-table-cell laytable-cell-1-0-6 "
+									th:text="${user.sex} "></div>
+							</td>
+							<td data-field=" ip " data-key="1-0-7 " class=" ">
+								<div class="layui-table-cell laytable-cell-1-0-7 "
+									th:text="${user.password} "></div>
+							</td>
+							<td data-field=" jointime " data-key="1-0-8 " class=" ">
+								<div class="layui-table-cell laytable-cell-1-0-8 "
+									th:text="${user.regdate} "></div>
+							</td>
+							<td data-field=" jointime " data-key="1-0-8 " class=" ">
+								<div class="layui-table-cell laytable-cell-1-0-8 "
+									th:text="${user.nickname} "></div>
+							</td>
+							<td data-field=" jointime " data-key="1-0-8 " class=" ">
+								<div class="layui-table-cell laytable-cell-1-0-8 "
+									th:text="${user.remark} "></div>
+							</td>
+							<td data-field=" jointime " data-key="1-0-8 " class=" ">
+								<div class="layui-table-cell laytable-cell-1-0-8 "
+									th:text="${user.role} "></div>
+							</td>
+							<td class=" td-manage "><a title="编辑 "
+								onclick="xadmin.open( '编辑', 'updateInput?id=${user.id}',800,600) "
+								href="javascript:; "> <i class="layui-icon ">&#xe642;</i>
+							</a> <a title="删除 " onclick="member_del(this,${user.id }) "
+								href="javascript:; "> <i class="layui-icon ">&#xe640;</i>
+							</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+
+        <script th:src="@{/layuiadmin/layui/layui.js} "></script>
+        <script>
+            layui.use(['laydate', 'form'], function() {
+                var laydate = layui.laydate;
+                var form = layui.form;
+            });
+            /*用户-删除*/
+            function member_del(obj, id) {
+                layer.confirm('确认要删除吗？', function(index) {
+                    //发异步删除数据
+                    $.post('delete', {
+                        "id ": id
+                    }, function(ajaxObj) {
+                        // 把返回的json格式的字符串转换的json对象
+                        var json = JSON.parse(ajaxObj);
+                        // 1是成功
+                        if (json.result == 1) {
+                            // 在页面中删除这个数据
+                            $(obj).parents("tr ").remove();
+                            // 提示信息
+                            layer.msg(json.msg, {
+                                icon: 1,
+                                time: 1000 //2秒关闭（如果不配置，默认是3秒）
+                            });
+                        } else {
+                            layer.msg("删除失败 ", {
+                                icon: 2,
+                                time: 1000
+                            });
+                        }
+                    });
+
+                });
+            }
+        </script>
+    </body>
+
+</html>
