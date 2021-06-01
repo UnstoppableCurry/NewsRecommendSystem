@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="news.recommend.system.mapper.TopTenMoviesMapper">
+	<select id="selectAllMovies" resultType="news.recommend.system.pojo.TopTenMoviesPojo">
+			SELECT * FROM `gennersrecommend_topten_movies`;
+	</select>
+	
+	<select id="selectByGenner" parameterType="news.recommend.system.pojo.TopTenMoviesPojo" resultType="news.recommend.system.pojo.TopTenMoviesPojo">
+			SELECT * FROM `gennersrecommend_topten_movies` where genners=#{genners};
+	</select>
+</mapper>

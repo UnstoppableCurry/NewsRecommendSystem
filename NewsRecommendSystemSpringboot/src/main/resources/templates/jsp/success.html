@@ -1,0 +1,62 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"
+	th:href="${#httpServletRequest.getContextPath()}+'/layuiadmin/layui/css/layui.css'"
+	media="all">
+<link rel="stylesheet"
+	th:href="${#httpServletRequest.getContextPath()}+'/layuiadmin/style/admin.css'"
+	media="all">
+<link rel="stylesheet"
+	th:href="${#httpServletRequest.getContextPath()}+'/layuiadmin/style/login.css'"
+	media="all">
+  <style>
+            body {
+              background:   url(../layuiadmin/style/res/BS.jpg) no-repeat fixed center; <!--*/-->
+                width: 100%;
+                height: 100%;
+                background-size: 100% 100%;
+            }
+              </style>
+            
+<title>注册成功</title>
+</head>
+<body>
+
+	<div id="success">
+		<div id="message">
+			<span class="a">注册成功,自动转跳</span>
+		</div>
+		<div>
+			<span>距离跳转还剩<span id="DaoJiShi">3</span>秒
+			</span>
+		</div>
+		<a href="index">-如果转跳失败请点击这里</a>
+		<!-- 返回上一页 -->
+		<div id="upPage">
+			<a href="javascript:history.go(-1)">返回上一页</a>
+		</div>
+	</div>
+</body>
+<script th:inline="javascript">
+    var link = [[${#httpServletRequest.getContextPath()}]];
+    </script>
+<script>
+		 var n=3;
+ 		setInterval("aaa()",1000)
+ 		var a = document.getElementById('DaoJiShi');
+ 		function aaa()
+        {
+ 	 		if(n>0){
+ 	 			a.innerText=n-1;
+ 	 		}
+        }
+ 	
+        setInterval("myInterval()",3000);//1000为1秒钟
+        function myInterval()
+        {
+            window.location.href='/index';
+        }
+    </script>
+</html>

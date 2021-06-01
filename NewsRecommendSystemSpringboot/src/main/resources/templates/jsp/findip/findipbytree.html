@@ -1,0 +1,186 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>登入 - Eazychina.store后台管理系统</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()}+'/layuiadmin/layui/css/layui.css'" media="all">
+        <link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()}+'/layuiadmin/style/admin.css'" media="all">
+        <link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()}+'/layuiadmin/style/login.css'" media="all">
+
+        <style>
+        #span {
+                display: none;
+            }
+            
+            #sonDiv {
+                display: none;
+            }
+            
+            body {
+                background:   url(../layuiadmin/style/res/BS.jpg) no-repeat fixed center;
+                width: 100%;
+                height: 100%;
+                background-size: 100% 100%;
+            }
+            /**
+                     * 整体居中功能；
+                     * 背景透明虚化
+                     * 溢出隐藏
+                     * 边缘圆角化
+                     * 文字增加淡阴影
+                     */
+            
+            #fatherDiv {
+                width: 98%;
+                height: 97%;
+                position: relative;
+                margin: 0 auto;
+                padding: 1em;
+                /*max-width: 93em;*/
+                background: hsla(0, 50%, 0%, .25) border-box;
+                overflow: hidden;
+            }
+            /**
+                     * 整体居中功能；
+                     * 背景透明虚化
+                     * 溢出隐藏
+                     * 边缘圆角化
+                     * 文字增加淡阴影
+                     */
+            
+            #sonDiv {
+                width: 58%;
+                height: 57%;
+                background: rgba(255, 255, 255, 0.657) border-box;
+                position: relative;
+                margin: 0 auto;
+                padding: 1em;
+                max-width: 53em;
+                overflow: hidden;
+                border-radius: .3em;
+                box-shadow: 0 0 0 1px hsla(0, 0%, 100%, .1) inset, 0 .5em 1em rgba(0, 0, 0, 0.6);
+                text-shadow: 0 1px 1px hsla(0, 0%, 100%, .3);
+            }
+            
+            .layui-trans layadmin-user-login-footer {
+                margin-bottom: 0;
+            }
+        }
+        </style>
+    </head>
+
+    <body>
+        <div id="fatherDiv">
+            <div id="loginButton" class="layui-anim layui-anim-up">
+                <button class="layui-btn layui-btn-radius layui-btn-primary" style="display:block;width: 200px;    margin: 0 auto;margin-top:320px;">Find IP</button>
+                <h1 class="layui-anim-scale" style="margin-top:100px; text-align: center ;">HelloWord</h1>
+
+            </div>
+            <div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
+                <div class="layui-anim layui-anim-up" id="sonDiv">
+                    <div class="layadmin-user-login-main">
+                        <div class="layadmin-user-login-box layadmin-user-login-header">
+                            <h2>EazyChina</h2>
+                            <p>IPSQL查询</p>
+                        </div>
+                        <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
+                            <div class="layui-form-item">
+                                <input type="text" name="IP" id="LAY-user-login-username" placeholder="IP字段" class="layui-input">
+                            </div>
+                            <div class="layui-form-item">
+                                <button type="submit" value="Submit" id="btn" class="layui-btn layui-btn-fluid">查询</button>
+                            </div>
+                            <span id="span"></span>
+                        </div>
+                    </div>
+
+
+
+                    <!--<div class="ladmin-user-login-theme">
+      <script type="text/html" template>
+        <ul>
+          <li data-theme=""><img src="{{ layui.setter.base }}style/res/bg-none.jpg"></li>
+          <li data-theme="#03152A" style="background-color: #03152A;"></li>
+          <li data-theme="#2E241B" style="background-color: #2E241B;"></li>
+          <li data-theme="#50314F" style="background-color: #50314F;"></li>
+          <li data-theme="#344058" style="background-color: #344058;"></li>
+          <li data-theme="#20222A" style="background-color: #20222A;"></li>
+        </ul>
+      </script>
+    </div>-->
+
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-trans layadmin-user-login-footer">
+
+            <p>© EazyCina <a href="http://www.eazychina.store/" target="_blank">EazyCina.com</a></p>
+        </div>
+        <script th:src="@{/layuiadmin/layui/layui.js}"></script>
+        <script>
+            layui.config({
+                base: '/layuiadmin/' //静态资源所在路径
+            }).extend({
+                index: 'lib/index' //主入口模块
+            }).use(['index', 'user'], function() {
+                var $ = layui.$,
+                    setter = layui.setter,
+                    admin = layui.admin,
+                    form = layui.form,
+                    router = layui.router(),
+                    search = router.search;
+
+                $("#btn").click(function() {
+                    $.ajax({
+                        url: "/LookingIP/ByTree",
+                        type: "get",
+                        ansync: false,
+                        data: {
+                            "IP": $("#LAY-user-login-username").val(),
+                        },
+                        dataType: "html",
+                        success: function(Data) {
+                        	 $("#span").css('display', 'block');
+                            $("#span").text(Data);
+                         
+                        }
+                    })
+                })
+                form.render();
+                //当点击时触发登录
+                window.addEventListener('mousedown', onMouseDown, false);
+
+                function onMouseDown(event) {
+
+                    if (event.button == 0) {
+
+                        console.log("鼠标左键!")
+
+                    } else if (event.button == 2) {
+
+                        console.log("鼠标右键!");
+                        location.reload();
+                        return false;
+                    }
+                }
+                $("#loginButton").click(function() {
+                    $("#sonDiv").css('display', 'block');
+
+                    $("#loginButton").addClass("layui-anim-fadeout");
+
+                    $("#loginButton").css('display', 'none')
+                })
+
+
+            });
+        </script>
+    </body>
+
+    </html>

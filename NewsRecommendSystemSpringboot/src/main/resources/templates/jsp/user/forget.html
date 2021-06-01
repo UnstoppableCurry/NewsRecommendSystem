@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>忘记密码 - layuiAdmin</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/login.css" media="all">
+</head>
+    <style>
+        
+        #btn {
+                display: none;
+            }
+            
+            
+            
+            body {
+                background:   url(../layuiadmin/style/res/BS.jpg) no-repeat fixed center;
+                width: 100%;
+                height: 100%;
+                background-size: 100% 100%;
+            }
+            /**
+                     * 整体居中功能；
+                     * 背景透明虚化
+                     * 溢出隐藏
+                     * 边缘圆角化
+                     * 文字增加淡阴影
+                     */
+            
+            #fatherDiv {
+                width: 98%;
+                height: 97%;
+                position: relative;
+                margin: 0 auto;
+                padding: 1em;
+                /*max-width: 93em;*/
+                background: hsla(0, 50%, 0%, .25) border-box;
+                overflow: hidden;
+            }
+            /**
+                     * 整体居中功能；
+                     * 背景透明虚化
+                     * 溢出隐藏
+                     * 边缘圆角化
+                     * 文字增加淡阴影
+                     */
+            
+            #sonDiv {
+            			width: 88%;
+                height: 87%;				 
+                               background: rgba(255, 255, 255, 0.657) border-box;
+               
+                position: relative;
+                margin: 0 auto;
+                padding: 1em;
+                max-width: 53em;
+                overflow: hidden;
+                border-radius: .3em;
+                box-shadow: 0 0 0 1px hsla(0, 0%, 100%, .1) inset, 0 .5em 1em rgba(0, 0, 0, 0.6);
+                text-shadow: 0 1px 1px hsla(0, 0%, 100%, .3);
+            }
+            
+            .layui-trans layadmin-user-login-footer {
+                margin-bottom: 0;
+            }
+        }
+        
+    </style>
+
+    <body>
+       <div id="fatherDiv">
+        <div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
+            <div class="layadmin-user-login-main">
+                 <div class="layui-anim layui-anim-up" id="sonDiv">
+                <div class="layadmin-user-login-box layadmin-user-login-header">
+                    <h2>EazyChina</h2>
+                  <p>EazyChina 天信出品的单页面后台管理模板系统</p>
+                </div>
+                <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
+
+                    <script type="text/html" template>
+                        {{# if(layui.router().search.type === 'resetpass'){ }}
+                        <div class="layui-form-item">
+                            <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="LAY-user-login-password"></label>
+                            <input type="password" name="password" id="LAY-user-login-password" lay-verify="pass" placeholder="新密码" class="layui-input">
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="LAY-user-login-repass"></label>
+                            <input type="password" name="repass" id="LAY-user-login-repass" lay-verify="required" placeholder="确认密码" class="layui-input">
+                        </div>
+                        <div class="layui-form-item">
+                            <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="LAY-user-forget-resetpass">重置新密码</button>
+                        </div>
+                        {{# } else { }}
+                        <div class="layui-form-item">
+                            <label class="layadmin-user-login-icon layui-icon layui-icon-email" for="email"></label>
+                            <input type="text" name="email" id="email" lay-verify="email" placeholder="请输入注册时的邮箱" class="layui-input">
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-row">
+                                <div class="layui-col-xs7">
+                                    <label class="layadmin-user-login-icon layui-icon layui-icon-vercode" for="LAY-user-login-vercode"></label>
+                                    <input type="text" name="vercode" id="LAY-user-login-vercode" lay-verify="required" placeholder="图形验证码" class="layui-input">
+                                </div>
+                                <div class="layui-col-xs5">
+                                    <div style="margin-left: 10px;">
+                                        <a class="checkcode" href=""><img class="layadmin-user-login-codeimg" id="LAY-user-get-vercode" src="codeBuilder"></a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-row">
+                                <div class="layui-col-xs7">
+                                    <label class="layadmin-user-login-icon layui-icon layui-icon-vercode" for="LAY-user-login-vercode"></label>
+                                    <input type="email" id="LAY-user-login-email" lay-verify="" placeholder="邮箱验证码" class="layui-input">
+                                </div>
+                                <div class="layui-col-xs5">
+                                    <div style="margin-left: 10px;">
+                                        <button type="button" class="layui-btn layui-btn-primary layui-btn-fluid" id="getsmscode">获取验证码</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <button id="btn" class="layui-btn layui-btn-fluid" lay-submit lay-filter="LAY-user-forget-submit">验证</button>
+                        </div>
+                        {{# } }}
+                    </script>
+
+                </div>
+            </div>
+
+            <div class="layui-trans layadmin-user-login-footer">
+
+                <p>© 2018 <a href="http://www.layui.com/" target="_blank">layui.com</a></p>
+
+            </div>
+
+        </div>
+  </div>
+            </div>
+        <script th:src="@{/layuiadmin/layui/layui.js}"></script>
+        <script>
+            var tf = 0;
+            //用于记录第一个图形验证码是否正确的状态
+            var email;
+            //用于记录用户邮箱
+            layui.config({
+                base: '/layuiadmin/' //静态资源所在路径
+            }).extend({
+                index: 'lib/index' //主入口模块
+            }).use(['index', 'user'], function() {
+                var $ = layui.$,
+                    setter = layui.setter,
+                    admin = layui.admin,
+                    form = layui.form,
+                    router = layui.router();
+
+                window.addEventListener('mousedown', onMouseDown, false);
+                function onMouseDown(event){
+
+                	if (event.button == 0) {
+
+                         console.log("鼠标左键!")
+
+                     }else if (event.button == 2){
+                    	 window.location.href="javascript:history.go(-1)";
+                         console.log("鼠标右键!");
+                         
+                     } 
+                }
+                
+                
+                $("#email").bind('input', function() {
+                    //当输入的验证码值发生改变时触发事件
+                    email = $("#email").val();
+                    console.log(email);
+
+
+                })
+                
+                $("#btn").click(
+                        function() {
+                            $.ajax({
+                                url: "user/forgetpassword",
+                                type: "get",
+                                ansync: false,
+                                data: {
+                                    "email": email,
+                                },
+                                contentType: 'text/json,charset=utf-8',
+                                dataType: 'json',
+                                success: function(Data) {
+                                	if (Data == 1) {
+                                        layer.msg('验证成功,重置密码');
+                                        window.location.href = "/user/gitpassword"
+
+                                    }
+                                    if (Data == 0) {
+                                        layer.msg('验证失败,此邮箱不存在');
+
+                                    }
+                                } })})
+                
+                $("#getsmscode").click(
+                    function() {
+                    	if(tf==1){
+                        $.ajax({
+                            url: "email/send",
+                            type: "get",
+                            ansync: false,
+                            data: {
+                                "email": email,
+                            },
+                            contentType: 'text/json,charset=utf-8',
+                            dataType: 'json',
+                            success: function(Data) {
+                                console.log("响应成功");
+                                console.log(Data);
+                                if (Data == 1) {
+                                    //alert("获取成功")
+                                    layer.msg('获取成功');
+                                }
+                                if (Data == 0) {
+                                    //alert("时间小于60秒,请等待")
+                                    layer.msg('时间小于60秒,请等待');
+
+                                }
+                            }
+                        })
+                    }else{
+                    	  layer.msg('图像验证失败');
+                    }
+                    }
+                )
+
+                $("#LAY-user-login-email").bind('input', function() {
+                    //当输入的验证码值发生改变时触发事件
+                    console.log("检测到正在输入验证码");
+                    console.log($("#LAY-user-login-email").val());
+                    var a = $("#LAY-user-login-email").val();
+                    $.ajax({
+                        url: "email/ajax",
+                        type: "get",
+                        ansync: false,
+                        data: {
+                            "code": a,
+                        },
+                        dataType: "html",
+                        success: function(Data) {
+                            console.log("ajax响应成功");
+
+
+                            console.log(Data);
+                            //如果验证码正确,就显示注册按钮
+                            if (Data == 1 & tf == 1) {
+                                $("#btn").css('display', 'block');
+                                $("#getsmscode").text('验证成功');
+                                layer.msg("验证成功");
+								
+                            } else {
+                                $("#btn").css('display', 'none');
+                                $("#getsmscode").text('邮箱验失败')
+                            }
+                        }
+                    });
+                })
+
+
+                $("#LAY-user-login-vercode").bind('input', function() {
+                    //当输入的验证码值发生改变时触发事件
+                    console.log("坚挺到正在输入验证码");
+                    console.log($("#LAY-user-login-vercode").val());
+                    var a = $("#LAY-user-login-vercode").val();
+                    var truefalse = 0;
+                    $.ajax({
+                        url: "checkajax",
+                        type: "get",
+                        ansync: false,
+                        data: {
+                            "code": a,
+                        },
+                        dataType: "html",
+                        success: function(Data) {
+                            console.log("响应成功");
+
+
+                            console.log(Data);
+
+                            truefalse = Data;
+
+                            console.log(truefalse);
+                            if (truefalse == 1) {
+                                //验证码验证成功
+                                tf = 1;
+                                layer.msg("4位验证码正确");
+
+
+                            } else {
+                                // 验证码验证失败
+                                tf = 0;
+                            }
+
+                        }
+                    });
+                    console.log("监测truefalse的值为:" + truefalse);
+                })
+
+            });
+        </script>
+    </body>
+
+    </html>
