@@ -13,5 +13,8 @@ scala部分已经上传训练好的model,需要可以直接部署,但是相似�
 
 视频教程在b站: https://www.bilibili.com/video/BV1eq4y1776f?from=search&seid=13616556324097728779
 文字资料在csdn:https://blog.csdn.net/weixin_49139876/article/details/116724661
+数据库:mysql
+链接：https://pan.baidu.com/s/1jLzfYbpsfHEjS4S17IyQnQ 
+提取码：1234 
 
 原创不易,一键三联哦
