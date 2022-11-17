@@ -4,7 +4,7 @@
 第一部分:scala部分用于模型训练以及数据预处理,包依赖管理使用sbt,冲突管理代码全部在内
 第二部分:springboot使用maven包依赖管理,需要自己配置端口,数据库redis和邮箱验证秘钥等
 
-对于菲关系型数据没有使用mongdb直接使用字符串拼接存储在mysql中,本项目并未使用sparkstreaming,kafuka,hbase,flink等技术,毕竟需要分布式环境和hadoop基础才能运行,对大部分人并不合适
+对于非关系型数据没有使用mongdb直接使用字符串拼接存储在mysql中,本项目并未使用sparkstreaming,kafuka,hbase,flink等技术,毕竟需要分布式环境和hadoop基础才能运行,对大部分人并不合适
 
 训练集部分使用的是movie-100数据,如果需要训练集可以评论,gitlib限制项目不能超过100m,传不上去
 
