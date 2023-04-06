@@ -1,8 +1,10 @@
 # NewsRecommendSystem
+![image](https://user-images.githubusercontent.com/65523997/230300367-6d22f08e-f2e7-40a7-8a6e-e5da667e51d6.png)
+![image](https://user-images.githubusercontent.com/65523997/230299809-54175e19-95b2-4c72-950a-13511f8705da.png)
 ![image](https://user-images.githubusercontent.com/65523997/230298837-d8b0d82f-85d5-48b5-acf3-2d6d9f9e8c8a.png)
 ![image](https://user-images.githubusercontent.com/65523997/230299202-ee9d70b8-ee9d-4014-bc13-ed99f9166ca4.png)
 ![image](https://user-images.githubusercontent.com/65523997/230299658-cfa8cc18-30c7-426b-8abf-25fe030c8ac2.png)
-![image](https://user-images.githubusercontent.com/65523997/230299809-54175e19-95b2-4c72-950a-13511f8705da.png)
+
 
     - 本系统架构为springboot+mysql+webmagic+selenium+redis+部署spark环境的linux(推荐centos系统)的服务器
     
@@ -25,5 +27,4 @@
     数据库:mysql
     链接：https://pan.baidu.com/s/1jLzfYbpsfHEjS4S17IyQnQ 
     提取码：1234 
-
-原创不易,一键三联哦
+    原创不易,一键三联哦
