@@ -13,6 +13,31 @@
     });
   }
 
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      var id = (link.getAttribute("href") || "").slice(1);
+      var target = id ? document.getElementById(id) : null;
+      if (!target) {
+        return;
+      }
+      event.preventDefault();
+      target.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "start"
+      });
+      if (history.pushState) {
+        history.pushState(null, "", "#" + id);
+      }
+      if (nav) {
+        nav.classList.remove("is-open");
+      }
+      if (toggle) {
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+
   document.querySelectorAll("[data-shot]").forEach(function (button) {
     button.addEventListener("click", function () {
       if (!dialog || !dialogImage || !dialogCaption) {

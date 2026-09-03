@@ -264,6 +264,12 @@ a:hover {
   font-size: 0.82rem;
 }
 
+.section,
+#top,
+#main {
+  scroll-margin-top: 5.75rem;
+}
+
 .section {
   padding: 2.5rem 0;
 }
