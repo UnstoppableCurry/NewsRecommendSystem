@@ -1,4 +1,9 @@
 # NewsRecommendSystem
+
+**项目展示页（静态说明，不是可运行的后端演示）：** [https://unstoppablecurry.github.io/NewsRecommendSystem/](https://unstoppablecurry.github.io/NewsRecommendSystem/)
+
+本仓库的完整应用需要 Java / Spring Boot、MySQL、Redis，以及部署了 Spark 的 Linux 环境，无法在浏览器里直接运行。上面的 GitHub Pages 页面只整理 README 与源码中的说明，并展示下方这 5 张已有界面截图。
+
 ![image](https://user-images.githubusercontent.com/65523997/230300643-b837e9b9-5562-425b-8d60-ad21cb05a573.png)
 
 ![image](https://user-images.githubusercontent.com/65523997/230300367-6d22f08e-f2e7-40a7-8a6e-e5da667e51d6.png)
