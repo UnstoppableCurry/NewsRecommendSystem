@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NewsRecommendSystem 项目展示 · 静态说明页</title>
+  <meta name="description" content="NewsRecommendSystem 的静态项目展示页。根据仓库 README 与源码整理架构和学习笔记，并展示 README 中已有的 5 张界面截图。本页不是可运行的 Spring / Spark 后端演示。">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="UnstoppableCurry">
+  <link rel="canonical" href="https://unstoppablecurry.github.io/NewsRecommendSystem/">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0b6b64">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="NewsRecommendSystem">
+  <meta property="og:title" content="NewsRecommendSystem 项目展示">
+  <meta property="og:description" content="静态项目展示页，不是在线后端演示。说明来自仓库 README 与源码，界面来自 README 中的 5 张截图。">
+  <meta property="og:url" content="https://unstoppablecurry.github.io/NewsRecommendSystem/">
+  <meta property="og:image" content="https://unstoppablecurry.github.io/NewsRecommendSystem/screenshots/01-login.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NewsRecommendSystem 项目展示">
+  <meta name="twitter:description" content="静态展示页：推荐系统学习项目的架构说明与 README 界面截图。">
+  <meta name="twitter:image" content="https://unstoppablecurry.github.io/NewsRecommendSystem/screenshots/01-login.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "NewsRecommendSystem 项目展示",
+    "inLanguage": "zh-CN",
+    "url": "https://unstoppablecurry.github.io/NewsRecommendSystem/",
+    "description": "NewsRecommendSystem 的静态项目展示页，不是可运行的后端演示。",
+    "isPartOf": {
+      "@type": "SoftwareSourceCode",
+      "name": "NewsRecommendSystem",
+      "codeRepository": "https://github.com/UnstoppableCurry/NewsRecommendSystem",
+      "programmingLanguage": ["Java", "Scala"]
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <div class="site-banner" role="note">
+    <p><strong>这是项目展示页，不是在线后端演示。</strong> 完整应用需要本机或服务器上的 Java、Spring Boot、MySQL、Redis，以及部署了 Spark 的 Linux 环境。GitHub Pages 只托管这份静态说明，不会启动推荐服务。</p>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span class="brand-text">
+          <strong>NewsRecommendSystem</strong>
+          <span>静态展示 · 非实时推荐</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">菜单</button>
+      <nav id="site-nav" class="site-nav" data-site-nav aria-label="页面章节">
+        <ul>
+          <li><a href="#about">项目说明</a></li>
+          <li><a href="#architecture">架构</a></li>
+          <li><a href="#features">已实现能力</a></li>
+          <li><a href="#screens">界面截图</a></li>
+          <li><a href="#notes">学习笔记</a></li>
+          <li><a href="#sources">资料与致谢</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <p class="kicker">GitHub Pages 静态展示</p>
+        <h1>新闻推荐系统学习项目</h1>
+        <p class="lede">仓库 README 把它写成推荐系统学习笔记，并配了一套可本地部署的 Spring Boot + Spark 示例。界面截图里侧栏写的是「新闻推荐系统」，列表内容来自电影数据；登录页仍保留 layuiAdmin / EazyChina 模板标题。本页只整理仓库里已经写明或代码里能核对到的信息，不编造用户量、准确率或上线结果。</p>
+        <p class="hero-actions">
+          <a class="button button-primary" href="https://github.com/UnstoppableCurry/NewsRecommendSystem">查看源代码</a>
+          <a class="button button-ghost" href="#screens">看 README 中的界面截图</a>
+        </p>
+        <div class="meta-row" aria-label="仓库中出现的技术名称">
+          <span class="pill">Spring Boot</span>
+          <span class="pill">MySQL</span>
+          <span class="pill">Redis</span>
+          <span class="pill">WebMagic + Selenium</span>
+          <span class="pill">Scala / Spark MLlib</span>
+          <span class="pill">Thymeleaf + layuiAdmin</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="section-inner">
+        <h2 id="about-title">项目说明</h2>
+        <p class="section-lead">下面几条同时来自 <code>README.md</code> 和仓库目录，用来说明这个项目是什么、不是什么。</p>
+        <div class="grid grid-2" style="margin-top: 1.25rem;">
+          <article class="card">
+            <h3>仓库里实际有什么</h3>
+            <ul>
+              <li><code>NewsRecommendSystemSpringboot/</code>：Maven 管理的 Spring Boot Web 应用，模板引擎是 Thymeleaf。</li>
+              <li><code>scala_sparkmlib/</code>：sbt 管理的 Scala 部分，用于模型训练和数据预处理；README 写明已上传训练好的 model。</li>
+              <li>README 写明训练集使用 movie-100 数据；Git 托管限制导致大数据集没有放进仓库。</li>
+              <li>前端页面基于 layuiAdmin 后台模板，主界面侧栏标题为「新闻推荐系统」。</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>本页明确不做的事</h3>
+            <ul>
+              <li>不在浏览器里模拟推荐接口、评分或爬虫。</li>
+              <li>不把学习笔记里的指标写成这个项目的评测成绩。</li>
+              <li>不声称系统已上线、已服务真实用户，或具备生产级效果。</li>
+              <li>不补充 README 以外的界面截图，也不改写这 5 张图的内容。</li>
+            </ul>
+          </article>
+        </div>
+        <p class="note">README 还写明：非关系型数据没有使用 MongoDB，而是用字符串拼接存在 MySQL；项目并未使用 Spark Streaming、Kafka、HBase、Flink。相似度矩阵曾在单机上长时间计算未完成，作者说明 Spark 面向集群，单机再强也难撑。</p>
+      </div>
+    </section>
+
+    <section class="section" id="architecture" aria-labelledby="architecture-title">
+      <div class="section-inner">
+        <h2 id="architecture-title">架构（按 README 与源码核对）</h2>
+        <p class="section-lead">README 原句把系统写成「springboot + mysql + webmagic + selenium + redis + 部署 spark 环境的 linux（推荐 centos）」。源码与此一致，并分成两部分。</p>
+        <div class="arch" role="list">
+          <article class="arch-col" role="listitem">
+            <h3>Web 与存储</h3>
+            <p>Spring Boot 1.4、Thymeleaf、MyBatis、Druid、MySQL。用户登录、注册、邮箱验证码、忘记密码都在 Java 控制器里。</p>
+          </article>
+          <div class="arch-arrow" aria-hidden="true">→</div>
+          <article class="arch-col" role="listitem">
+            <h3>实时管道</h3>
+            <p>点击电影后，Jedis 把用户最近行为写入 Redis；再按相似度表取相似条目。README 与控制器注释都把这称作实时推荐管道。</p>
+          </article>
+          <div class="arch-arrow" aria-hidden="true">→</div>
+          <article class="arch-col" role="listitem">
+            <h3>离线训练</h3>
+            <p>Scala + Spark 2.3.2 MLlib。仓库里有 ALS、基于标签的冷启动（TF-IDF）、以及按隐向量算电影余弦相似度的脚本。</p>
+          </article>
+        </div>
+        <div class="grid grid-2" style="margin-top: 1.25rem;">
+          <article class="card">
+            <h3>依赖管理</h3>
+            <p>Scala 部分用 sbt，README 写明冲突处理写在构建配置里。Spring Boot 部分用 Maven，需要自行配置端口、数据库、Redis 和邮箱验证密钥。</p>
+          </article>
+          <article class="card">
+            <h3>ALS 如何接到页面</h3>
+            <p><code>RecommendMovieController</code> 的 <code>/alsRecommend</code> 通过 SSH（JSch）在 Linux 上执行已打包的 Spark/Java 任务，再把返回的电影 ID 查回 MySQL。这不是浏览器里能完成的步骤。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="section-inner">
+        <h2 id="features-title">已实现能力</h2>
+        <p class="section-lead">只列控制器、页面和 Scala 脚本里能直接对上的功能，不补充未实现的产品承诺。</p>
+        <div class="grid grid-3" style="margin-top: 1.25rem;">
+          <article class="card">
+            <h3>账号与冷启动</h3>
+            <p>登录、注册、图形验证码、邮箱验证码、忘记密码。注册后进入标签选择页（<code>reg2.html</code>），把用户感兴趣的 genres 写入用户表，供后续标签推荐使用。</p>
+          </article>
+          <article class="card">
+            <h3>热门与标签推荐</h3>
+            <p><code>/getHistoryHotMovies</code> 读历史热门表；<code>/getTheUserGenners</code> 按用户标签取各类 Top 电影。主页 <code>homepage2.html</code> 对应截图里的「热门推荐」「标签推荐」。</p>
+          </article>
+          <article class="card">
+            <h3>实时相似推荐</h3>
+            <p>点击条目会写入 Redis，<code>/getHistoryRating</code> 取出最近一条，再查相似度集合。详情页 <code>2index.html</code> 展示「实时推荐」和「新闻详情」。</p>
+          </article>
+          <article class="card">
+            <h3>ALS 推荐</h3>
+            <p><code>homepage3.html</code> 调用 <code>/alsRecommend</code>，标题写作「ALS隐语义模型(交叉最小二乘)推荐」。侧栏另有「ALS推荐」入口。</p>
+          </article>
+          <article class="card">
+            <h3>资讯抓取</h3>
+            <p><code>NewsRecommendSpider</code> 用 WebMagic + Selenium 打开搜索页，按电影标题抓「最新资讯」，再经 Pipeline 写入存储。这是详情页文案的来源，不是独立新闻站点。</p>
+          </article>
+          <article class="card">
+            <h3>离线脚本</h3>
+            <p>ALS 训练与 RMSE 计算、按类型做 TF-IDF 冷启动、用隐向量算余弦相似度并写回 MySQL。这些脚本在 <code>scala_sparkmlib/</code>，需要 Spark 环境。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="screens" aria-labelledby="screens-title">
+      <div class="section-inner">
+        <h2 id="screens-title">界面截图</h2>
+        <p class="section-lead">以下 5 张图就是 README 里按顺序给出的界面截图，未增删、未重绘。截图拍摄于本地 <code>localhost:8080</code>，用来说明当时的页面长什么样。</p>
+        <div class="shot-list">
+          <figure class="shot">
+            <button type="button" data-shot data-full="./screenshots/01-login.png" data-alt="登录页截图：半透明登录框叠在风景背景上，标题为 EazyChina，含用户名、密码和验证码。" data-caption="截图 1 · 登录页">
+              <img src="./screenshots/01-login.png" width="1523" height="863" alt="登录页截图：浏览器打开 localhost:8080，半透明登录框叠在风景背景上，标题为 EazyChina，含用户名、密码、验证码和注册入口。界面来自 layuiAdmin 模板。">
+            </button>
+            <figcaption>
+              <strong>1. 登录页</strong>
+              <p>对应 <code>login.html</code> 与 <code>/</code>、<code>/login</code>。页面标题和主文案仍是模板里的 EazyChina / layuiAdmin，不是后加的品牌包装。</p>
+            </figcaption>
+          </figure>
+          <figure class="shot">
+            <button type="button" data-shot data-full="./screenshots/02-register.png" data-alt="注册页截图：地址为 localhost:8080/reg，表单含用户名、邮箱、验证码、密码和昵称。" data-caption="截图 2 · 注册页">
+              <img src="./screenshots/02-register.png" width="1532" height="864" alt="注册页截图：地址为 localhost:8080/reg，标题为注册，表单含用户名、邮箱、验证码、密码、确认密码和昵称。">
+            </button>
+            <figcaption>
+              <strong>2. 注册页</strong>
+              <p>对应 <code>/reg</code> 与 <code>reg.html</code>。提交后会走注册接口并进入标签选择页。邮箱验证码在 <code>SenEmailController</code> 中发送。</p>
+            </figcaption>
+          </figure>
+          <figure class="shot">
+            <button type="button" data-shot data-full="./screenshots/03-realtime-news.png" data-alt="详情页截图：左侧实时推荐电影列表，右侧新闻详情。" data-caption="截图 3 · 实时推荐与新闻详情">
+              <img src="./screenshots/03-realtime-news.png" width="1487" height="870" alt="主页详情截图：侧栏为新闻推荐系统，左侧卡片标题为实时推荐，列出电影名与类型；右侧卡片标题为新闻详情。">
+            </button>
+            <figcaption>
+              <strong>3. 实时推荐与新闻详情</strong>
+              <p>对应点击条目后的 <code>/getAllNews</code> 与 <code>2index.html</code>。左侧是 Redis 触发的相似推荐，右侧是爬虫取回的资讯片段。列表项是电影标题，不是独立新闻稿库。</p>
+            </figcaption>
+          </figure>
+          <figure class="shot">
+            <button type="button" data-shot data-full="./screenshots/04-hot-tag.png" data-alt="标签推荐主页截图：左侧热门推荐，右侧标签推荐。" data-caption="截图 4 · 热门推荐与标签推荐">
+              <img src="./screenshots/04-hot-tag.png" width="1471" height="852" alt="主页截图：侧栏选中标签推荐，左侧热门推荐、右侧标签推荐，条目为电影标题、类型和 ID。">
+            </button>
+            <figcaption>
+              <strong>4. 热门推荐与标签推荐</strong>
+              <p>对应 <code>/home/homepage2</code>。这是 README 中的第四张图，展示热门列表和按用户标签取出的列表。</p>
+            </figcaption>
+          </figure>
+          <figure class="shot">
+            <button type="button" data-shot data-full="./screenshots/05-hot-tag-alt.png" data-alt="标签推荐主页的另一张 README 截图，同样包含热门推荐和标签推荐。" data-caption="截图 5 · 标签推荐主页（README 第五张）">
+              <img src="./screenshots/05-hot-tag-alt.png" width="1519" height="868" alt="标签推荐主页的另一张 README 截图：同样展示热门推荐和标签推荐电影列表。">
+            </button>
+            <figcaption>
+              <strong>5. 标签推荐主页（README 第五张）</strong>
+              <p>这是 README 按顺序给出的最后一张界面图，与上一张同属标签推荐主页，未改文件内容。</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="notes" aria-labelledby="notes-title">
+      <div class="section-inner">
+        <h2 id="notes-title">README 学习笔记摘要</h2>
+        <p class="section-lead">README 大部分是推荐系统课堂式笔记，不是本仓库的评测报告。下面只压缩原文要点，不把它们说成已经跑出来的成绩。</p>
+        <p class="note">这些条目来自 README 的学习笔记，<strong>不是</strong> NewsRecommendSystem 的线上指标或用户调研结论。</p>
+        <div class="grid grid-2" style="margin-top: 1.25rem;">
+          <article class="card">
+            <h3>笔记中的分类</h3>
+            <ul>
+              <li>离线训练：用一段时间的历史数据，迭代周期较长，拟合中长期兴趣。</li>
+              <li>在线训练：用最近反馈尽快影响下一次推荐；笔记写它更适合广告、电商等对时效要求高的场景。</li>
+              <li>算法族：人口统计、基于内容、协同过滤（User-CF / Item-CF，以及 SVD、LSA、SVM 等基于模型的方法），再加上混合。</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>笔记中的评测说法</h3>
+            <ul>
+              <li>在线试验提到 A/B 测试；离线试验提到划分训练/测试集并用事先定义的指标比较。</li>
+              <li>预测误差提到 RMSE、MAE、标准差；Top-N 提到精确率和召回率。</li>
+              <li>其他维度提到满意度、覆盖率、多样性、惊喜度、信任度、实时性、健壮性和商业目标。</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="run" aria-labelledby="run-title">
+      <div class="section-inner">
+        <h2 id="run-title">若要运行原项目</h2>
+        <p class="section-lead">展示页不能代替部署。README 要求自行准备环境和密钥。下面只复述仓库已经写明的条件。</p>
+        <ol class="flow">
+          <li>准备 MySQL，并按 README 提供的网盘链接自行获取数据库文件（提取码见 README）。</li>
+          <li>配置 Spring Boot 的端口、数据源、Redis，以及邮箱服务密钥。</li>
+          <li>Scala / Spark 部分需要 Linux（README 推荐 CentOS）上的 Spark 环境；仓库声明已带训练好的 model。</li>
+          <li>视频和文字说明见下方原作者链接，不要把本页当成可点击的后台。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="sources" aria-labelledby="sources-title">
+      <div class="section-inner">
+        <h2 id="sources-title">资料与致谢</h2>
+        <p class="section-lead">展示页只做静态整理，版权与讲解仍归原仓库作者。README 原文写着「原创不易」。界面模板来自 layuiAdmin。</p>
+        <div class="grid grid-2" style="margin-top: 1.25rem;">
+          <article class="card">
+            <h3>原作者给出的资料</h3>
+            <ul>
+              <li><a href="https://github.com/UnstoppableCurry/NewsRecommendSystem">GitHub 仓库</a></li>
+              <li><a href="https://www.bilibili.com/video/BV1eq4y1776f">Bilibili 视频教程</a></li>
+              <li><a href="https://blog.csdn.net/weixin_49139876/article/details/116724661">CSDN 文字资料</a></li>
+              <li>数据库网盘链接与提取码见仓库 README，本页不重复粘贴提取码以外的部署口令。</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>本页用到的材料</h3>
+            <ul>
+              <li>文案依据：<code>README.md</code>，以及 Spring / Scala 源码中可核对的路由和模块。</li>
+              <li>图片依据：README 中的 5 张 GitHub user-images 截图，现放在 <code>docs/screenshots/</code>。</li>
+              <li>UI 框架可见于模板标题：layuiAdmin。</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>静态展示站地址：<a href="https://unstoppablecurry.github.io/NewsRecommendSystem/">https://unstoppablecurry.github.io/NewsRecommendSystem/</a></p>
+      <div class="footer-links">
+        <a href="https://github.com/UnstoppableCurry/NewsRecommendSystem">源代码</a>
+        <a href="https://www.bilibili.com/video/BV1eq4y1776f">视频教程</a>
+        <a href="https://blog.csdn.net/weixin_49139876/article/details/116724661">CSDN 笔记</a>
+        <a href="./robots.txt">robots.txt</a>
+        <a href="./sitemap.xml">sitemap</a>
+      </div>
+      <p>本页由仓库文档生成，用于 GitHub Pages 展示。它不连接 MySQL、Redis 或 Spark，也不代表推荐效果。</p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" data-lightbox aria-label="放大截图">
+    <div class="lightbox-bar">
+      <p data-lightbox-caption></p>
+      <button type="button" class="lightbox-close" data-lightbox-close>关闭</button>
+    </div>
+    <img alt="">
+  </dialog>
+
+  <script src="./assets/script.js" defer></script>
+</body>
+</html>
